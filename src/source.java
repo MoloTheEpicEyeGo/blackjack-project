@@ -1,5 +1,5 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
+
+
 
 public class source {
     public static void main(String[] args)
@@ -23,9 +23,6 @@ public class source {
         // Check if dealer has blackjack, dealer shows cards and ends game if so
 
         // Print to console asking the player what they want to do
-        System.out.println(card.toString());
-        card.shuffleDeck();
-        System.out.println(card.toString());
 
     }
 }
