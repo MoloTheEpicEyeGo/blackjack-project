@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class player extends Cards
+public class player
 {
 
     private int money;
@@ -9,6 +9,17 @@ public class player extends Cards
     int handScore;
     boolean isStanding;
     boolean busted;
+
+
+    //player object
+    public player(int initialMoney)
+    {
+        this.money = initialMoney;
+        this.hand = new ArrayList<>();
+        this.handScore = 0;
+        this.isStanding = false;
+        this.busted = false;
+    }
 
 
     public void hit() {

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class dealer extends Cards
+public class dealer
 {
 
     private int casinoMoney;
