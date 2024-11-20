@@ -1,17 +1,16 @@
-public class actions
+public interface actions
 {
-        //cards array
+    //hit
+    void hit();
 
-        //hit method
+    //stand
+    void stand();
 
-        //stand method
+    //split
+    void split();
+    //double down
+    void doubleDown();
 
-        //split method
-
-        //double down method
-
-        //check if dealer || player goes over 21
-
-        //
-
+    //check if dealer || player goes over 21
+    boolean over21();
 }

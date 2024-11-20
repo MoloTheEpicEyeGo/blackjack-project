@@ -1,4 +1,4 @@
-public class player implements actions
+public class dealer implements actions
 {
     int money;
 
