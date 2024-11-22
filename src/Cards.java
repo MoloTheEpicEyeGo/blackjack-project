@@ -6,6 +6,7 @@ import java.util.Collections;
 public class Cards
 {
 
+    int topIndex = 0;
     //Two 52 Card Deck
     private final String[] cards = {
             "SA", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9", "S10", "SJ", "SQ", "SK",
@@ -33,6 +34,8 @@ public class Cards
         }
     }
 
+
+
     public String[] getCards() {
         return cards;
     }
@@ -42,5 +45,12 @@ public class Cards
     @Override
     public String toString() {
         return Arrays.toString(cards);
+    }
+
+    public String drawCard() {
+        if (topIndex < cards.length) {
+            return cards[topIndex++]; // Return the current card and move to the next
+        }
+        return null; // Return null if all cards are drawn
     }
 }
