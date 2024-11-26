@@ -24,47 +24,70 @@ public class source
 
         //Showing player their starting stats
         System.out.println("starting bankroll: " + "$" + player.getMoney());
-        //Thread.sleep(3000);
-        clearConsole();
+        Thread.sleep(2000);
+        util.clearConsole();
 
         while (player.getMoney() >= 25)
         {
             // Ask the player how much they want to bet
-            System.out.print("Place your bet (minimum $25): ");
+            System.out.print("place bet (minimum $25): ");
             bet = scanner.nextInt();
 
             // Validate the bet
-            if (bet < 25) {
-                System.out.println("The minimum bet is $25. Please try again.");
+            if (bet < 25)
+            {
+                System.out.println("the minimum bet is $25.");
                 continue;
             }
 
-            if (!player.placeBet(bet)) {
-                System.out.println("You don't have enough money to place this bet. Game over!");
+            if (!player.placeBet(bet))
+            {
+                System.out.println("no money, BYE!");
                 break;
             }
 
-            // Deal initial cards
+            // Deal initial cards into individual array
             dealer.firstTwo(card);
             player.firstTwo(card);
 
+
+
+
+
+
+
+
             // Show dealer's first card and player's hand
             System.out.println(dealer.getHand());
+            Thread.sleep(1500);
             System.out.println(player.getHand());
 
+
+
+
+
+
+
+
+
+
+
             // Reveal dealer's hand for now (will change in future versions)
-            System.out.println(dealer.revealHand());
+            System.out.println("dealer hand: " + dealer.revealHand());
 
             // Check if player wants to continue playing or quit
-            System.out.print("Do you want to continue playing? (yes/no): ");
+            System.out.print("Do you want to continue playing? (y/n): ");
             String choice = scanner.next();
-            if (choice.equalsIgnoreCase("no")) {
+            if (choice.equalsIgnoreCase("n")) {
                 System.out.println("Thank you for playing!");
                 break;
             }
+            else if (choice.equalsIgnoreCase("y")) {
+                continue;
+            }
 
             // Clear the console and prepare for the next round
-            clearConsole();
+            util.clearConsole();
         }
 
         // End of the game
@@ -72,11 +95,4 @@ public class source
     }
 }
 
-    //Trying to dix this method but cannot find a reason why its not working
-    //only for version 1.0
-    public static void clearConsole() {
-        for (int i = 0; i < 50; i++) {
-            System.out.println();
-        }
-    }
 

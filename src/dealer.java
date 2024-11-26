@@ -36,7 +36,7 @@ public class dealer
 
     public String getHand()
     {
-        return "dealer hand [" + hand.getFirst() + "] [x]";
+        return "dealer hand: [" + hand.getFirst() + "] [x]";
     }
 
     public ArrayList<String> revealHand()
