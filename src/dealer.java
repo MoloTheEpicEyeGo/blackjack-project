@@ -21,6 +21,11 @@ public class dealer
         hand.add(hiddenCard);
     }
 
+    public void clearHand()
+    {
+        hand.clear();
+    }
+
     public void hit() {
         // Dealer logic for hitting
     }

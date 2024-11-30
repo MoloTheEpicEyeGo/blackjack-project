@@ -30,17 +30,27 @@ public class player
         hand.add(secondCard);
     }
 
+    public void clearHand()
+    {
+        hand.clear();
+    }
+
     public void hit(Cards deck) {
         String card = deck.drawCard();
         hand.add(card);
     }
 
     public void stand() {
-        // Logic for the "stand" action
+        this.isStanding = true;
+        System.out.println("player stands");
     }
 
     public void split() {
-        // Logic for the "split" action
+        //if statement checks if hand is splittable
+        if (hand.size() == 2 && hand.get(0).charAt(1) == hand.get(1).charAt(1))
+        {
+            //LAST FINSIHED STOPPED HERE XXXXXXXXXXXXXXXXXXXXXXXXXXX
+        }
     }
 
     public void doubleDown() {
@@ -63,18 +73,13 @@ public class player
         return false;
     }
 
-    public boolean placeBet(int betAmount) {
-        if (betAmount > 0 && betAmount <= money) {
-            this.bet = betAmount; // Set the current bet
-            this.money -= betAmount; // Deduct the bet from the player's money
-            System.out.println("player placed a bet of $" + betAmount);
-            System.out.println("remaining money: $" + this.money);
-            return true;
-        } else {
-            System.out.println("INVALID bet amount. You have $" + this.money + " available.");
-            return false;
-        }
-    }
+//    public int bet (int money)
+//    {
+//        this.money =- money;
+//        return this.money;
+
+    //fix betting system
+//    }
 
 
 }

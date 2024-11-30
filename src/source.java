@@ -33,10 +33,13 @@ public static void main(String[] args) throws InterruptedException {
             System.out.println("the minimum bet is $25.");
             continue;
         }
-
-        if (!player.placeBet(bet)) {
-            System.out.println("no money, BYE!");
-            break;
+        else if (bet > player.getMoney()) {
+            System.out.println("the minimum bet is $25.");
+            continue;
+        }
+        else
+        {
+            player.bet(bet); //fix
         }
 
         // Deal initial cards into individual array
@@ -50,7 +53,7 @@ public static void main(String[] args) throws InterruptedException {
         System.out.println(player.getHand());
 
 
-
+        //add hit , stand, split stuff (first I need to define the methods lol)
 
 
 
@@ -69,8 +72,14 @@ public static void main(String[] args) throws InterruptedException {
             break;
         }
 
+        //clear hand method (clears both dealer and players hand)
+        player.clearHand();
+        dealer.clearHand();
+
+
         //clear console after every round
         util.clearConsole();
+        System.out.println(player.getMoney());
     }
 
     // End of the game
