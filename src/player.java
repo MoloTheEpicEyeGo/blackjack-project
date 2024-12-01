@@ -7,7 +7,6 @@ public class player
     ArrayList<String> hand = new ArrayList<String>();
     int bet;
     int handScore;
-    boolean isStanding;
     boolean busted;
 
 
@@ -17,7 +16,6 @@ public class player
         this.money = initialMoney;
         this.hand = new ArrayList<>();
         this.handScore = 0;
-        this.isStanding = false;
         this.busted = false;
     }
 
@@ -41,7 +39,6 @@ public class player
     }
 
     public void stand() {
-        this.isStanding = true;
         System.out.println("player stands");
     }
 
@@ -62,11 +59,18 @@ public class player
         return this.money;
     }
 
-    public ArrayList<String> getHand()
+    public ArrayList<String> printHand()
     {
         System.out.print("player hand: ");
         return this.hand;
     }
+
+    public ArrayList<String> getHand()
+    {
+        return this.hand;
+    }
+
+
 
     public boolean over21() {
         // Logic to check if total is over 21
@@ -75,8 +79,14 @@ public class player
 
     public void bet(int amount)
     {
-        this.money -= amount; // Deduct the bet amount from the player's money
+        this.money -= amount; //Deduct the bet amount from the player's money
     }
 
+    public boolean bust()
+    {
+        this.busted = true;
+        System.out.println("player busted");
+        return this.busted;
+    }
 
 }
