@@ -95,7 +95,6 @@ public static void main(String[] args) throws InterruptedException {
                     if (!(util.calculateHand(player.getHand()) < 21))
                     {
                         player.bust();
-                        System.out.println("player LOSES!");
                         break;
                     }
                 }
@@ -123,7 +122,7 @@ public static void main(String[] args) throws InterruptedException {
         System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
 
         //implement dealers moves
-        while(util.calculateHand(dealer.getHand()) < 17)
+        while ((util.calculateHand(dealer.getHand()) < 17) && !player.getBust())
         {
             dealer.hit(card);
             System.out.println(dealer.revealHand());
@@ -145,7 +144,7 @@ public static void main(String[] args) throws InterruptedException {
         {
             System.out.println("player WINS!");
             player.winMoney(bet);
-            continue;
+            break; // Exits the loop
         }
         else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()))
         {
@@ -157,7 +156,10 @@ public static void main(String[] args) throws InterruptedException {
             player.pushMoney(bet);
         }
 
-
+//        else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()))
+//        {
+//        System.out.println("player LOSES!");
+//        }
 
 
         //ask if player wants to continue playing
@@ -180,7 +182,7 @@ public static void main(String[] args) throws InterruptedException {
 
     // End of the game
     System.out.println("You don't have enough money to continue. Game over!");
-    System.out.println("length of deck: " + card.size());
+
 }
 
 
