@@ -8,7 +8,7 @@ public static void main(String[] args) throws InterruptedException {
     //vars
     int playCountBeforeShuffle = 0;
     int bet = 0;
-    String choice;
+    String choice = "";
 
     //Making new Objects
     Cards card = new Cards();
@@ -23,10 +23,15 @@ public static void main(String[] args) throws InterruptedException {
 
     //Showing player their starting stats
     System.out.println("starting bankroll: " + "$" + player.getMoney());
-    Thread.sleep(2000);
+    //Thread.sleep(2000);
     util.clearConsole();
 
-    while (player.getMoney() >= 25) {
+    while (player.getMoney() >= 25)
+    {
+        //resets busts status so its not always true.
+        player.bustReset();
+
+
         // Ask the player how much they want to bet
         System.out.print("place bet (minimum $25): ");
 
@@ -57,19 +62,52 @@ public static void main(String[] args) throws InterruptedException {
 
 
         // Show dealer's first card and player's hand
-        System.out.println(dealer.getHand());
+        System.out.println(dealer.printHand());
         Thread.sleep(500);
-        System.out.println(player.getHand());
+        System.out.println(player.printHand());
+        System.out.println("ur hand: " + util.calculateHand(player.getHand()));
 
 
-        //implement if-else branch to check if cards are able to split. if so, split until different try blocks
-        //asking the player what they want to do.
+        //todo
+        //implement if-else branch to check if cards are able to split.
+        //implement blackjack checker before each round
         try
         {
             util.clearConsole();
             System.out.println("hit: h  or  stand: s");
-            choice = scanner.nextLine();
+            choice = "";
+            if (util.calculateHand(player.getHand()) == 21)
+            {
+                System.out.println("player got blackjack!");
+                System.out.println("player WINS!");
+                choice = "s";
+            }
+            while(!(choice.equals("s")))
+            {
+                scanner.nextLine(); //cleans line
 
+                choice = scanner.next();
+                if (choice.equals("h"))
+                {
+                    player.hit(card);
+                    System.out.println(player.printHand());
+                    System.out.println("ur hand: " + util.calculateHand(player.getHand()));
+                    if (!(util.calculateHand(player.getHand()) < 21))
+                    {
+                        player.bust();
+                        System.out.println("player LOSES!");
+                        break;
+                    }
+                }
+                else if (choice.equals("s"))
+                {
+                    player.stand();
+                    System.out.println(player.printHand());
+                    System.out.println("ur hand: " + util.calculateHand(player.getHand()));
+                    break;
+                }
+            }
+            util.clearConsole();
 
         } catch (InputMismatchException e) {
             System.out.println("invalid input");
@@ -77,19 +115,55 @@ public static void main(String[] args) throws InterruptedException {
             continue;
         }
 
-
-
-
-
-
+        //clear console for more visability
+        util.clearConsole();
 
         //reveal dealer hand
         System.out.println("dealer hand: " + dealer.revealHand());
+        System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
+
+        //implement dealers moves
+        while(util.calculateHand(dealer.getHand()) < 17)
+        {
+            dealer.hit(card);
+            System.out.println(dealer.revealHand());
+            System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
+
+            //checks if dealer has busted
+            if (!(util.calculateHand(dealer.getHand()) <= 21))
+            {
+                dealer.bust();
+                System.out.println("player WINS!");
+                break;
+            }
+
+            Thread.sleep(800);
+        }
+
+        //check winnings
+        if (util.calculateHand(player.getHand()) > util.calculateHand(dealer.getHand()) && !player.getBust())
+        {
+            System.out.println("player WINS!");
+            player.winMoney(bet);
+            continue;
+        }
+        else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()))
+        {
+            System.out.println("player LOSES!");
+        }
+        else if (util.calculateHand(player.getHand()) == util.calculateHand(dealer.getHand()) && !player.getBust())
+        {
+            System.out.println("player PUSHES!");
+            player.pushMoney(bet);
+        }
+
+
+
 
         //ask if player wants to continue playing
         if (!util.askToContinuePlaying(scanner)) {
             System.out.println("Thank you for playing!");
-            break;
+            System.exit(0);
         }
 
         //clear hand method (clears both dealer and players hand)
@@ -98,12 +172,15 @@ public static void main(String[] args) throws InterruptedException {
 
 
         //clear console after every round
+
         util.clearConsole();
+
         System.out.println(player.getMoney());
     }
 
     // End of the game
     System.out.println("You don't have enough money to continue. Game over!");
+    System.out.println("length of deck: " + card.size());
 }
 
 
