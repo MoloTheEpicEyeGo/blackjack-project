@@ -53,4 +53,8 @@ public class Cards
         }
         return null; // Return null if all cards are drawn
     }
+
+    public int size() {
+        return cards.length;
+    }
 }
