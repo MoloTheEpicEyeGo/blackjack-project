@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class util
 {
     public static void clearConsole() {
-        for (int i = 0; i < 3; i++) {
-            System.out.println();
+        for (int i = 0; i < 2; i++) {
+            System.out.println("*");
         }
     }
 
