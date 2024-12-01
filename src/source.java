@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public static void main(String[] args) throws InterruptedException {
@@ -26,20 +27,26 @@ public static void main(String[] args) throws InterruptedException {
     while (player.getMoney() >= 25) {
         // Ask the player how much they want to bet
         System.out.print("place bet (minimum $25): ");
-        bet = scanner.nextInt();
 
-        // Validate the bet
-        if (bet < 25) {
-            System.out.println("the minimum bet is $25.");
-            continue;
-        }
-        else if (bet > player.getMoney()) {
-            System.out.println("the minimum bet is $25.");
-            continue;
-        }
-        else
+        try
         {
-            player.bet(bet); //fix
+            bet = scanner.nextInt();
+
+            // Validate the bet
+            if (bet < 25) {
+                System.out.println("the minimum bet is $25.");
+                continue;
+            }
+            else if (bet > player.getMoney()) {
+                System.out.println("the minimum bet is $25.");
+                continue;
+            }
+
+            player.bet(bet);
+        } catch (InputMismatchException e) {
+            System.out.println("invalid input");
+            scanner.nextLine(); //clear the input
+            continue;
         }
 
         // Deal initial cards into individual array

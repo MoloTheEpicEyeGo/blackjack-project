@@ -73,13 +73,10 @@ public class player
         return false;
     }
 
-//    public int bet (int money)
-//    {
-//        this.money =- money;
-//        return this.money;
-
-    //fix betting system
-//    }
+    public void bet(int amount)
+    {
+        this.money -= amount; // Deduct the bet amount from the player's money
+    }
 
 
 }
