@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class util
 {
     public static void clearConsole() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 3; i++) {
             System.out.println();
         }
     }

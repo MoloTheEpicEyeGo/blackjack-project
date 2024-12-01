@@ -8,6 +8,8 @@ public static void main(String[] args) throws InterruptedException {
     //vars
     int playCountBeforeShuffle = 0;
     int bet = 0;
+    String choice;
+
     //Making new Objects
     Cards card = new Cards();
     player player = new player(10000);
@@ -56,13 +58,24 @@ public static void main(String[] args) throws InterruptedException {
 
         // Show dealer's first card and player's hand
         System.out.println(dealer.getHand());
-        Thread.sleep(1500);
+        Thread.sleep(500);
         System.out.println(player.getHand());
 
 
-        //add hit , stand, split stuff (first I need to define the methods lol)
+        //implement if-else branch to check if cards are able to split. if so, split until different try blocks
+        //asking the player what they want to do.
+        try
+        {
+            util.clearConsole();
+            System.out.println("hit: h  or  stand: s");
+            choice = scanner.nextLine();
 
 
+        } catch (InputMismatchException e) {
+            System.out.println("invalid input");
+            scanner.nextLine(); //clear the input
+            continue;
+        }
 
 
 
