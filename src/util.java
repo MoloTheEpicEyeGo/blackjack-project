@@ -5,7 +5,7 @@ public class util
 {
     public static void clearConsole() {
         for (int i = 0; i < 2; i++) {
-            System.out.println("*");
+            System.out.println("");
         }
     }
 
