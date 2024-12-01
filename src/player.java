@@ -59,6 +59,17 @@ public class player
         return this.money;
     }
 
+    //winning money method
+    public void winMoney(int bet)
+    {
+        this.money += bet * 2;
+    }
+
+    public void pushMoney(int bet)
+    {
+        this.money += bet;
+    }
+
     public ArrayList<String> printHand()
     {
         System.out.print("player hand: ");
@@ -84,9 +95,17 @@ public class player
 
     public boolean bust()
     {
-        this.busted = true;
         System.out.println("player busted");
-        return this.busted;
+        return this.busted = true;
     }
 
+    public void bustReset()
+    {
+        this.busted = false;
+    }
+
+    public boolean getBust()
+    {
+        return this.busted;
+    }
 }
