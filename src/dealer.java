@@ -8,7 +8,6 @@ public class dealer
     private String firstCard;  // To store the visible card
     private String hiddenCard; // To store the hidden card
 
-    int handScore;
     boolean isStanding;
     boolean busted;
 
@@ -26,8 +25,9 @@ public class dealer
         hand.clear();
     }
 
-    public void hit() {
-        // Dealer logic for hitting
+    public void hit(Cards deck) {
+        String card = deck.drawCard();
+        hand.add(card);
     }
 
     public void stand() {
@@ -39,14 +39,26 @@ public class dealer
         return false;
     }
 
-    public String getHand()
+    public String printHand()
     {
         return "dealer hand: [" + hand.getFirst() + "] [x]";
+    }
+
+    public ArrayList<String> getHand()
+    {
+        return this.hand;
     }
 
     public ArrayList<String> revealHand()
     {
         return this.hand;
+    }
+
+    public boolean bust()
+    {
+        this.busted = true;
+        System.out.println("dealer busted");
+        return this.busted;
     }
 
 }
