@@ -89,10 +89,11 @@ public static void main(String[] args) throws InterruptedException {
                 choice = scanner.next();
                 if (choice.equals("h"))
                 {
+                    Thread.sleep(500);
                     player.hit(card);
                     System.out.println(player.printHand());
                     System.out.println("ur hand: " + util.calculateHand(player.getHand()));
-                    if (!(util.calculateHand(player.getHand()) < 21))
+                    if (!(util.calculateHand(player.getHand()) <= 21))
                     {
                         player.bust();
                         break;
@@ -122,38 +123,40 @@ public static void main(String[] args) throws InterruptedException {
         System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
 
         //implement dealers moves
-        while ((util.calculateHand(dealer.getHand()) < 17) && !player.getBust())
-        {
+        boolean roundResolved = false; // Tracks if the round outcome has been decided
+
+// Dealer's moves
+        while ((util.calculateHand(dealer.getHand()) < 17) && !player.getBust()) {
             dealer.hit(card);
             System.out.println(dealer.revealHand());
             System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
 
-            //checks if dealer has busted
-            if (!(util.calculateHand(dealer.getHand()) <= 21))
-            {
+            // Checks if dealer has busted
+            if (!(util.calculateHand(dealer.getHand()) <= 21)) {
                 dealer.bust();
-                System.out.println("player WINS!");
+                System.out.println("dealer busted. player WINS!");
+                player.winMoney(bet);
+                roundResolved = true; // Mark round as resolved
                 break;
             }
 
             Thread.sleep(800);
         }
 
-        //check winnings
-        if (util.calculateHand(player.getHand()) > util.calculateHand(dealer.getHand()) && !player.getBust())
-        {
-            System.out.println("player WINS!");
-            player.winMoney(bet);
-            break; // Exits the loop
-        }
-        else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()))
-        {
-            System.out.println("player LOSES!");
-        }
-        else if (util.calculateHand(player.getHand()) == util.calculateHand(dealer.getHand()) && !player.getBust())
-        {
-            System.out.println("player PUSHES!");
-            player.pushMoney(bet);
+// Check winnings (only if round is unresolved)
+        if (!roundResolved) {
+            if (util.calculateHand(player.getHand()) > util.calculateHand(dealer.getHand()) && !player.getBust()) {
+                System.out.println("player WINS!");
+                player.winMoney(bet);
+                roundResolved = true;
+            } else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()) && !dealer.getBust()) {
+                System.out.println("player LOSES!");
+                roundResolved = true;
+            } else if (util.calculateHand(player.getHand()) == util.calculateHand(dealer.getHand()) && !player.getBust() && !dealer.getBust()) {
+                System.out.println("player PUSHES!");
+                player.pushMoney(bet);
+                roundResolved = true;
+            }
         }
 
 //        else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()))
