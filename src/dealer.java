@@ -61,4 +61,9 @@ public class dealer
         return this.busted;
     }
 
+    public boolean getBust()
+    {
+        return this.busted;
+    }
+
 }
