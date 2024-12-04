@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -31,15 +32,13 @@ public static void main(String[] args) throws InterruptedException {
         //resets busts status so its not always true.
         player.bustReset();
 
-
-        // Ask the player how much they want to bet
         System.out.print("place bet (minimum $25): ");
 
         try
         {
             bet = scanner.nextInt();
 
-            // Validate the bet
+            //checks if bet is valid
             if (bet < 25) {
                 System.out.println("the minimum bet is $25.");
                 continue;
@@ -56,12 +55,12 @@ public static void main(String[] args) throws InterruptedException {
             continue;
         }
 
-        // Deal initial cards into individual array
+        //deal the first two cards to both dealer and player
         dealer.firstTwo(card);
         player.firstTwo(card);
 
 
-        // Show dealer's first card and player's hand
+        //shows the dealers and players hand.
         System.out.println(dealer.printHand());
         Thread.sleep(500);
         System.out.println(player.printHand());
@@ -71,10 +70,14 @@ public static void main(String[] args) throws InterruptedException {
         //todo
         //implement if-else branch to check if cards are able to split.
         //implement blackjack checker before each round
+        if (util.checkSplittable(player.getHand()))
+        {
+            //implement splitting stuff
+        }
         try
         {
             util.clearConsole();
-            System.out.println("hit: h  or  stand: s");
+            System.out.println("hit: h  or  stand: s  or  doubleDown: d");
             choice = "";
             if (util.calculateHand(player.getHand()) == 21)
             {
@@ -82,6 +85,7 @@ public static void main(String[] args) throws InterruptedException {
                 System.out.println("player WINS!");
                 choice = "s";
             }
+
             while(!(choice.equals("s")))
             {
                 scanner.nextLine(); //cleans line
@@ -99,6 +103,15 @@ public static void main(String[] args) throws InterruptedException {
                         break;
                     }
                 }
+//                else if (choice.equals("d"))
+//                {
+//                    Thread.sleep(500);
+//                    player.bet(bet);
+//                    if (player.getMoney() < 0)
+//                    {
+//                        continue;
+//                    }
+//                } fix double down method, cannot think of solution right now
                 else if (choice.equals("s"))
                 {
                     player.stand();
@@ -123,13 +136,14 @@ public static void main(String[] args) throws InterruptedException {
         System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
 
         //implement dealers moves
-        boolean roundResolved = false; // Tracks if the round outcome has been decided
+        boolean roundResolved = false; //checks if the outcome has been decided
 
-// Dealer's moves
+        // Dealer's moves
         while ((util.calculateHand(dealer.getHand()) < 17) && !player.getBust()) {
+            Thread.sleep(800);
             dealer.hit(card);
             System.out.println(dealer.revealHand());
-            System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()));
+            System.out.println("dealers hand: " + util.calculateHand(dealer.getHand()) + " vs. " + util.calculateHand(player.getHand()));
 
             // Checks if dealer has busted
             if (!(util.calculateHand(dealer.getHand()) <= 21)) {
@@ -140,7 +154,7 @@ public static void main(String[] args) throws InterruptedException {
                 break;
             }
 
-            Thread.sleep(800);
+
         }
 
 // Check winnings (only if round is unresolved)
@@ -180,7 +194,7 @@ public static void main(String[] args) throws InterruptedException {
 
         util.clearConsole();
 
-        System.out.println(player.getMoney());
+        System.out.println("$" + player.getMoney());
     }
 
     // End of the game
