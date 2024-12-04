@@ -4,11 +4,8 @@ public class dealer
 {
 
     private int casinoMoney;
-    ArrayList<String> hand = new ArrayList<String>();
-    private String firstCard;  // To store the visible card
-    private String hiddenCard; // To store the hidden card
+    ArrayList<String> hand = new ArrayList<String>();// To store the hidden card
 
-    boolean isStanding;
     boolean busted;
 
     public void firstTwo(Cards deck)

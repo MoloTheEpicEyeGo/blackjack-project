@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Cards
@@ -32,12 +31,6 @@ public class Cards
         for (int i = 0; i < cards.length; i++) {
             cards[i] = deck.get(i);
         }
-    }
-
-
-
-    public String[] getCards() {
-        return cards;
     }
 
 

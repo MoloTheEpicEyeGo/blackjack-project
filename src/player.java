@@ -5,10 +5,8 @@ public class player
 
     private int money;
     ArrayList<String> hand = new ArrayList<String>();
-    int bet;
     int handScore;
     boolean busted;
-
 
     //player object
     public player(int initialMoney)
@@ -49,6 +47,8 @@ public class player
             //LAST FINSIHED STOPPED HERE XXXXXXXXXXXXXXXXXXXXXXXXXXX
         }
     }
+
+
 
     public void doubleDown() {
         // Logic for the "double down" action
@@ -92,6 +92,7 @@ public class player
     {
         this.money -= amount; //Deduct the bet amount from the player's money
     }
+
 
     public boolean bust()
     {

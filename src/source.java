@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -7,7 +6,6 @@ public static void main(String[] args) throws InterruptedException {
     System.out.println("BlackJack 1.0 \nby: travis t.");
 
     //vars
-    int playCountBeforeShuffle = 0;
     int bet = 0;
     String choice = "";
 
