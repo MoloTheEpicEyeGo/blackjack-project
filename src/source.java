@@ -6,8 +6,8 @@ public static void main(String[] args) throws InterruptedException {
     System.out.println("BlackJack 1.0 \nby: travis t.");
 
     //vars
-    int bet = 0;
-    String choice = "";
+    int bet;
+    String choice;
 
     //Making new Objects
     Cards card = new Cards();
@@ -29,6 +29,10 @@ public static void main(String[] args) throws InterruptedException {
     {
         //resets busts status so its not always true.
         player.bustReset();
+
+        //Shuffle deck every round
+        //will change so it shuffles every 6 rounds so card counting is possible
+        card.shuffleDeck();
 
         System.out.print("place bet (minimum $25): ");
 
