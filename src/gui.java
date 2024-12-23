@@ -11,7 +11,15 @@ public class gui
     int length = 600;
 
     JFrame frame = new JFrame("BlackJack 1.0");
-    JPanel panel = new JPanel();
+
+    JPanel panel = new JPanel(); //background color
+
+    JPanel buttonPanel = new JPanel();
+    JButton hitButton = new JButton("hit");
+    JButton stayButton = new JButton("stay");
+
+
+
 
 
     public gui()
@@ -26,6 +34,14 @@ public class gui
         panel.setBackground(new Color(78, 106, 84)); //sets to green
 
         frame.add(panel);
+
+        hitButton.setFocusable(false); //makes it unhighlightable
+        stayButton.setFocusable(false);
+
+        buttonPanel.add(hitButton);
+        buttonPanel.add(stayButton);
+
+        frame.add(buttonPanel, BorderLayout.SOUTH);
     }
 
 
