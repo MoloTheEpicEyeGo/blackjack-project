@@ -23,3 +23,10 @@ Blackjack 1.0 is a command-line-based simulation of the classic casino card game
 * Dealer's Turn:
   * The dealer must hit until their hand value is at least 17. 
   * If the dealer busts, the player automatically wins.
+
+# To Do:
+* DOUBLE DOWN FEATURE DOES NOT WORK AND WILL CAUSE ERROR. will fix decemeber 2024
+* will implement shuffle cards every few rounds so card counting is possible
+
+# discord - lmk if you find any bugs/errors and send any push requests
+* itravis
