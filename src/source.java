@@ -74,17 +74,10 @@ public static void main(String[] args) throws InterruptedException {
         System.out.println("ur hand: " + util.calculateHand(player.getHand()));
 
 
-        //todo
-        //implement if-else branch to check if cards are able to split.
-        //implement blackjack checker before each round
-        if (util.checkSplittable(player.getHand()))
-        {
-            //implement splitting stuff
-        }
         try
         {
             util.clearConsole();
-            System.out.println("hit: h  or  stand: s  or  doubleDown: d");
+            System.out.println("hit: h  or  stand: s");
             choice = "";
             if (util.calculateHand(player.getHand()) == 21)
             {
@@ -110,15 +103,6 @@ public static void main(String[] args) throws InterruptedException {
                         break;
                     }
                 }
-//                else if (choice.equals("d"))
-//                {
-//                    Thread.sleep(500);
-//                    player.bet(bet);
-//                    if (player.getMoney() < 0)
-//                    {
-//                        continue;
-//                    }
-//                } fix double down method, cannot think of solution right now
                 else if (choice.equals("s"))
                 {
                     player.stand();
