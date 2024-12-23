@@ -16,6 +16,7 @@ public static void main(String[] args) throws InterruptedException {
 
     //User input object
     Scanner scanner = new Scanner(System.in);
+    gui window = new gui(); //gui window object
 
     //shuffle deck
     card.shuffleDeck();
@@ -24,6 +25,10 @@ public static void main(String[] args) throws InterruptedException {
     System.out.println("starting bankroll: " + "$" + player.getMoney());
     //Thread.sleep(2000);
     util.clearConsole();
+
+    //start new window gui
+
+
 
     while (player.getMoney() >= 25)
     {
