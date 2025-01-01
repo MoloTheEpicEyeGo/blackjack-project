@@ -60,8 +60,6 @@ public static void main(String[] args) throws InterruptedException {
         //deal the first two cards to both dealer and player
         dealer.firstTwo(card);
         player.firstTwo(card);
-        //start new window gui
-        gui window = new gui(dealer); //gui window object
 
 
         //shows the dealers and players hand.
@@ -69,8 +67,8 @@ public static void main(String[] args) throws InterruptedException {
         Thread.sleep(500);
         System.out.println(player.printHand());
         System.out.println("ur hand: " + util.calculateHand(player.getHand()));
-
-
+        //start new window gui
+        gui window = new gui(dealer); //gui window object
         try
         {
             util.clearConsole();
