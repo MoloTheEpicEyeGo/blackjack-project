@@ -30,9 +30,16 @@ public class dealer
         return "dealer hand: [" + hand.getFirst() + "] [x]";
     }
 
+    //returns whole hand
     public ArrayList<String> getHand()
     {
         return this.hand;
+    }
+
+    //returns specific card if given specific index
+    public String getHand(int index)
+    {
+        return this.hand.get(index);
     }
 
     public ArrayList<String> revealHand()
