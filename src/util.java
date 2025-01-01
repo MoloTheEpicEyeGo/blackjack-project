@@ -60,12 +60,4 @@ public class util
         }
         return handVal;
     }
-
-    public static boolean checkSplittable(ArrayList<String> hand)
-    {
-        char rankA = hand.get(0).charAt(1);
-        char rankB = hand.get(1).charAt(1);
-
-        return rankA == rankB;
-    }
 }

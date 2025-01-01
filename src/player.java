@@ -40,20 +40,6 @@ public class player
         System.out.println("player stands");
     }
 
-    public void split() {
-        //if statement checks if hand is splittable
-        if (hand.size() == 2 && hand.get(0).charAt(1) == hand.get(1).charAt(1))
-        {
-            //LAST FINSIHED STOPPED HERE XXXXXXXXXXXXXXXXXXXXXXXXXXX
-        }
-    }
-
-
-
-    public void doubleDown() {
-        // Logic for the "double down" action
-    }
-
     public int getMoney()
     {
         return this.money;
@@ -79,13 +65,6 @@ public class player
     public ArrayList<String> getHand()
     {
         return this.hand;
-    }
-
-
-
-    public boolean over21() {
-        // Logic to check if total is over 21
-        return false;
     }
 
     public void bet(int amount)

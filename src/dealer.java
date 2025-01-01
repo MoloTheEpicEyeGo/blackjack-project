@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 public class dealer
 {
-
-    private int casinoMoney;
     ArrayList<String> hand = new ArrayList<String>();// To store the hidden card
 
     boolean busted;
@@ -25,15 +23,6 @@ public class dealer
     public void hit(Cards deck) {
         String card = deck.drawCard();
         hand.add(card);
-    }
-
-    public void stand() {
-        // Dealer logic for standing
-    }
-
-    public boolean over21() {
-        // Logic to check if dealer's total is over 21
-        return false;
     }
 
     public String printHand()
