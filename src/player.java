@@ -67,6 +67,11 @@ public class player
         return this.hand;
     }
 
+    public String getHand(int index)
+    {
+        return this.hand.get(index);
+    }
+
     public void bet(int amount)
     {
         this.money -= amount; //Deduct the bet amount from the player's money
