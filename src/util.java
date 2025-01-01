@@ -36,14 +36,19 @@ public class util
 
         for (String card : hand)
         {
-            char rank = card.charAt(1);
+            // Get the first character of the card string, which is now the rank
+            char rank = card.charAt(0);
 
             if (rank == 'A')
             {
                 aceCount++;
                 handVal += 11;
             }
-            else if (rank == 'K' || rank == 'Q' || rank == 'J' || rank == '1')
+            else if (rank == 'K' || rank == 'Q' || rank == 'J')
+            {
+                handVal += 10;
+            }
+            else if (rank == '1') // Special case for 10
             {
                 handVal += 10;
             }
