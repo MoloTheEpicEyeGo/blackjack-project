@@ -1,4 +1,4 @@
-# Blackjack 1.0
+# Blackjack 1.0 (README UPDATED 12/31/24)
 
 Blackjack 1.0 is a command-line-based simulation of the classic casino card game, Blackjack. The game allows a single player to play against the dealer with standard Blackjack rules, including hitting, standing, busting, and scoring. The program also supports basic mechanics such as betting, checking for blackjack, and handling bust scenarios.
 
@@ -25,8 +25,7 @@ Blackjack 1.0 is a command-line-based simulation of the classic casino card game
   * If the dealer busts, the player automatically wins.
 
 # To Do:
-* DOUBLE DOWN FEATURE DOES NOT WORK AND WILL CAUSE ERROR. will fix decemeber 2024
-* will implement shuffle cards every few rounds so card counting is possible
+* finish up gui
 
 # discord - lmk if you find any bugs/errors and send any push requests
 * itravis
