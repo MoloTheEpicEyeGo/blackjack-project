@@ -13,7 +13,9 @@ public class gui
     int cardHeight = 154;
 
     JFrame frame = new JFrame("BlackJack 1.0");
-
+    JPanel buttonPanel = new JPanel();
+    JButton hitButton = new JButton("hit");
+    JButton stayButton = new JButton("stay");
     JPanel panel = new JPanel()
     {
         @Override
@@ -21,24 +23,20 @@ public class gui
         {
             super.paintComponent(g);
 
-            try
-            {
-                //drawing hidden card
-                Image hiddenCardImg = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
-                g.drawImage(hiddenCardImg, 20, 20, cardWidth, cardHeight, null);
-
-                //drawing dealers hand
-                for (int i = 0; i < )
-            } catch(Exception e)
-            {
-                e.printStackTrace();
-            }
+//            try
+//            {
+//                //drawing hidden card
+//                Image hiddenCardImg = new ImageIcon(getClass().getResource("./cards/BACK.png")).getImage();
+//                g.drawImage(hiddenCardImg, 20, 20, cardWidth, cardHeight, null);
+//
+//                //drawing dealers hand
+//                for (int i = 0; i < )
+//            } catch(Exception e)
+//            {
+//                e.printStackTrace();
+//            }
         }
     };//background color & drawing cards by overRiding "paintComponents" method to output image of cards
-
-    JPanel buttonPanel = new JPanel();
-    JButton hitButton = new JButton("hit");
-    JButton stayButton = new JButton("stay");
 
 
 
@@ -54,17 +52,23 @@ public class gui
 
         panel.setLayout(new BorderLayout()); //changes background color
         panel.setBackground(new Color(78, 106, 84)); //sets to green
-        buttonPanel.setBackground(new Color(50, 106, 84));
+        buttonPanel.setBackground(new Color(78, 106, 84));
 
         frame.add(panel);//adds to the main frame
 
+        //hit button
+        hitButton.setPreferredSize(new Dimension(100, 100)); //changes the size of the button
         hitButton.setFocusable(false); //makes it unhighlightable
+
+        //stay button
+        stayButton.setPreferredSize(new Dimension(100, 100));
         stayButton.setFocusable(false);
 
-        buttonPanel.add(hitButton);
+        buttonPanel.add(hitButton); //adding stay & hit buttons to the button panel
         buttonPanel.add(stayButton);
 
-        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        frame.add(buttonPanel, BorderLayout.SOUTH); //adding the buttonPanel (stores hit & stay button) into frame
     }
 
 
