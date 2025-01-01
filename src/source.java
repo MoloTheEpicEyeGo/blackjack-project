@@ -25,6 +25,10 @@ public static void main(String[] args) throws InterruptedException {
     //Thread.sleep(2000);
     util.clearConsole();
 
+    //start new window gui
+    gui window = new gui(dealer, player, card); //gui window object
+
+
     while (player.getMoney() >= 25)
     {
         //resets busts status so its not always true.
@@ -67,8 +71,10 @@ public static void main(String[] args) throws InterruptedException {
         Thread.sleep(500);
         System.out.println(player.printHand());
         System.out.println("ur hand: " + util.calculateHand(player.getHand()));
-        //start new window gui
-        gui window = new gui(dealer); //gui window object
+
+
+
+
         try
         {
             util.clearConsole();
@@ -142,6 +148,7 @@ public static void main(String[] args) throws InterruptedException {
 
 
         }
+
 
 // Check winnings (only if round is unresolved)
         if (!roundResolved) {
