@@ -36,12 +36,6 @@ public class dealer
         return this.hand;
     }
 
-    //returns specific card if given specific index
-    public String getHand(int index)
-    {
-        return this.hand.get(index);
-    }
-
     public ArrayList<String> revealHand()
     {
         return this.hand;
