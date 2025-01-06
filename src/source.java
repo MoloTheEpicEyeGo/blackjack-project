@@ -25,18 +25,16 @@ public static void main(String[] args) throws InterruptedException {
     //Thread.sleep(2000);
     util.clearConsole();
 
-    //start new window gui
-    gui window = new gui(dealer, player, card); //gui window object
-
-
     while (player.getMoney() >= 25)
     {
         //resets busts status so its not always true.
         player.bustReset();
 
-        //Shuffle deck every round
-        //will change so it shuffles every 6 rounds so card counting is possible
-        card.shuffleDeck();
+        //checks to shuffle deck if deck is less than 10 cards
+        if(card.remainingCards() < 10)
+        {
+            card.shuffleDeck();
+        }
 
         System.out.print("place bet (minimum $25): ");
 
@@ -149,28 +147,19 @@ public static void main(String[] args) throws InterruptedException {
 
         }
 
-
-// Check winnings (only if round is unresolved)
+        //start new window gui
+        // Check winnings (only if round is unresolved)
         if (!roundResolved) {
             if (util.calculateHand(player.getHand()) > util.calculateHand(dealer.getHand()) && !player.getBust()) {
                 System.out.println("player WINS!");
                 player.winMoney(bet);
-                roundResolved = true;
             } else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()) && !dealer.getBust()) {
                 System.out.println("player LOSES!");
-                roundResolved = true;
             } else if (util.calculateHand(player.getHand()) == util.calculateHand(dealer.getHand()) && !player.getBust() && !dealer.getBust()) {
                 System.out.println("player PUSHES!");
                 player.pushMoney(bet);
-                roundResolved = true;
             }
         }
-
-//        else if (util.calculateHand(player.getHand()) < util.calculateHand(dealer.getHand()))
-//        {
-//        System.out.println("player LOSES!");
-//        }
-
 
         //ask if player wants to continue playing
         if (!util.askToContinuePlaying(scanner)) {
